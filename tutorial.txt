@@ -1,0 +1,46 @@
+link 1: https://github.com/flask-restful/flask-restful
+link 2: https://maithegeek.medium.com/install-mysql-on-macos-11-big-sur-bad07c062171
+link 3: https://downloads.mysql.com/archives/community/
+link 4(tutorial): https://towardsdatascience.com/sqlalchemy-python-tutorial-79a577141a91
+link 5(tutorial): https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_declaring_mapping.htm
+link 6(tutorial): https://www.geeksforgeeks.org/get-financial-data-from-yahoo-finance-with-python/
+link 7(tutorial): https://www.geeksforgeeks.org/flask-rendering-templates/
+link 8(import tutorial): https://medium.com/@kasperjuunge/yfinance-10-ways-to-get-stock-data-with-python-6677f49e8282
+link 9(how to put pandas dataframe to html): https://stackoverflow.com/questions/22180993/pandas-dataframe-display-on-a-webpage
+link 10(how to make a pandas dataframe from looping list): https://www.geeksforgeeks.org/create-a-pandas-dataframe-from-lists/
+
+
+- follow tutorial on link 2 and go to link3 and choose product version 8.0.26 for mac version 11
+- password for root of the downloaded mysql is Caicai886
+- go to mysql command line and put '\s' to find info of the database
+- pip install pymysql then set the connection credential as 
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://.....'
+in the create_engine function
+- pip install cryptography
+- to find username and hostname, use 'SELECT CURRENT_USER()' in mysql command line tool;
+
+how to get to mysql command line
+- the installation location of mysql is '/usr/local/mysql', go to the bin folder under the installation path, for example, in this example, it will be '/usr/local/mysql/bin'
+- type 'mysql -u root -p'
+- if it fail, do following:
+	- vi ~/.zshrc  
+	- add "export PATH=${PATH}:/usr/local/mysql/bin/"
+	- ran source ~/.zshrc
+- try mysql command again
+
+to delete a record
+- we will need to combine filter and delete, then put a commit, if no commit is put, there will be no change to the db
+For example:
+session.query(Stocks).filter(Stocks.id==1).delete()
+session.commit()
+
+yahoo finance tutorial
+- link 6
+
+how to use render template and @app.route to get the variable from html to python script
+- link 7
+
+- note that if you try to add a record to the database where the primary key is already taken, you will get an error message:
+sqlalchemy.exc.IntegrityError: (pymysql.err.IntegrityError) (1062, "Duplicate entry '1' for key 'stock.PRIMARY'")
+
+- 

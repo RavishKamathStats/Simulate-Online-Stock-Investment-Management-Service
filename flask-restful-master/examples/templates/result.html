@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Information on {{fname}}</h1>
+<h3>type of company: {{type}}</h3>
+<p>current price: {{current_price}}</p>
+
+<form action="/buy_stock/" method="POST">
+<label for="stock_buy">buy: </label>
+<input type="text" id="stock_buy" name="stock_buy"><br><br>
+<input type="submit" value="Submit">
+</form>
+
+<form action="/sell_stock/" method="POST">
+<label for="stock_sell">sell: </label>
+<input type="text" id="stock_sell" name="stock_sell"><br><br>
+<input type="submit" value="Submit">
+</form>
+
+{{record | safe}}
+
+</body>
+</html>
